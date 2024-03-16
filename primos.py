@@ -6,49 +6,91 @@ Autores: Ivan Enciso & Pau Codina
 Fecha: 2023-11-15
 """
 
-def es_primo(numero):
+def esPrimo(numero):
   """
-  Comprueba si un número es primo.
+  Descripcion:
+    Comprueba si un numero es primo o no.
 
-  Parámetros:
-    numero: El número a comprobar.
+  Parametros:
+    Variable int a comprobar.
 
   Salida:
-    True si el número es primo, False en caso contrario.
+    Variable boleana, Tue si es primo, False en caso contrario.
   """
-  if numero <= 1:
+  if numero <=1:
     return False
-  for i in range(2, int(numero**0.5) + 1):
-    if numero % i == 0:
+  for prueba in range(2, int(numero**0.5) + 1):  #Unicamente comprobamos hata la raiz cuadrada de numero.
+    if numero % prueba == 0:
       return False
   return True
 
-def generar_primos(n):
+def primos(numero):
   """
-  Genera una lista con los números primos hasta un límite dado.
-
-  Parámetros:
-    n: El límite superior para la generación de números primos.
-
+  Descripcion:
+    Devuelve una tupla con todos los numeros menores que numero.
+  Parametros:
+    Variable que intica el limite superior para la generacion de primos.
   Salida:
-    Una lista con los números primos hasta n.
+    Tupla de numeros primos hasta numero.
   """
-  primos = [2]
-  for i in range(3, n + 1, 2):
-    if es_primo(i):
-      primos.append(i)
-  return primos
+  primos = []
+  for prueba in range (2, numero):
+    if esPrimo(prueba):
+      primos.append(prueba)
+  return tuple(primos)
 
-def main():
+def descompon(numero):
   """
-  Función principal para probar las funciones del módulo.
+  Descripcion:
+    Devuelve una tupla con la descomposicion en factores primos de numero.
+  Parameteos:
+    Variable entera a descomponer en factores primos.
+  Salida:
+    Tupla con la decomposicion en factores primos de numero.
   """
-  numero = 11
-  print(f"El número {numero} {'es' if es_primo(numero) else 'no es'} primo")
+  factores = []
 
-  n = 20
-  primos = generar_primos(n)
-  print(f"Los primeros {n} números primos son: {primos}")
+  while numero % 2 == 0:
+    factores.append(2)
+    numero //=2
 
-if __name__ == "__main__":
-  main()
+  for prueba in range(3, int(numero ** 0.5)+1, 2):
+    factores.append(prueba)
+    numero //= prueba
+  
+  if numero > 2:
+    factores.append(numero)
+
+  return factores
+
+def mcm(numero1, numero2): 
+  """
+  Descipcion:
+    Devuelve el mínimo común múltiplo de sus argumentos.
+  Parametros:
+    Numero1 (int): El primer número.
+    Numero2 (int): El segundo número.
+  Salida:
+    El máximo común divisor de numero1 y numero2.
+  """
+  descomposicion1 = descompon(numero1)
+  descomposicion2 = descompon(numero2)
+  mcmFactores = []
+
+  return mcmFactores
+
+def mcd(numero1, numero2): 
+  """
+  Descipcion:
+    Devuelve el máximo común divisor de sus argumentos.
+  Parametros:
+    numero1 (int): El primer número.
+    numero2 (int): El segundo número.
+  Salida:
+    El mínimo común múltiplo de numero1 y numero2
+  """
+  descomposicion1 = descompon(numero1)
+  descomposicion2 = descompon(numero2)
+  mcdFactores = []
+
+  return mcdFactores
