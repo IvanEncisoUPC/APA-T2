@@ -94,3 +94,35 @@ def mcd(numero1, numero2):
   mcdFactores = []
 
   return mcdFactores
+
+def mcmN(*numeros):
+    """
+    Descipcion:
+      Calcula el mínimo común múltiplo de un número arbitrario de argumentos.
+    Parametros:
+      *numeros (int): Números de los que se calculará el mínimo común múltiplo.
+    Salida:
+      int: Mínimo común múltiplo de los números dados.
+    """
+    mcm_resultado = 1
+    for num in numeros:
+        mcm_resultado = mcm(mcm_resultado, num)
+    return mcm_resultado
+
+def mcdN(*numeros):
+    """
+    Descipcion:
+      Calcula el máximo común divisor de un número arbitrario de argumentos.
+    Parametros:
+      *numeros (int): Números de los que se calculará el máximo común divisor.
+    Salida:
+      int: Máximo común divisor de los números dados.        
+    """
+    mcd_resultado = numeros[0]
+    for num in numeros[1:]:
+        mcd_resultado = mcd(mcd_resultado, num)
+    return mcd_resultado
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
