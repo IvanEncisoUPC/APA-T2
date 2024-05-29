@@ -130,8 +130,7 @@ if __name__ == "__main__":
     # doctest.testmod(verbose=True)
     import sys
     if len(sys.argv) != 2:
-        print(f"{sys.argv[0]} - Descompone un numero en sus factores primos")
         print(f"Uso: {sys.argv[0]} numero")
         sys.exit(1)
     numero = int(sys.argv[1])
-    print(f"{primos(numero)}")
+    print(f"{descompon(numero)}")
